@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Data } from "./Data";
-import Update from "./Update";
 
 
 const userslice = createSlice({
@@ -14,7 +13,7 @@ const userslice = createSlice({
           },
           Updateuser : (state,action) => {
                const {id, name, email} = action.payload
-               const updateuser = state.find(user => user.id==id);
+               const updateuser = state.find(user => user.id===id);
                if(updateuser){
                     updateuser.name = name
                     updateuser.email = email 
@@ -23,7 +22,7 @@ const userslice = createSlice({
           },
           Deleteuser : (state,action) => {
                const {id} = action.payload
-               const updateuser = state.find(user => user.id==id);
+               const updateuser = state.find(user => user.id===id);
                if(updateuser){
                     return state.filter(f => f.id !== id)
                }

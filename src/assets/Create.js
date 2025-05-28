@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { adduser } from './Reducer'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Create = () => {
     const [name,setname] = useState('')
@@ -20,18 +20,18 @@ const Create = () => {
 
   return (
     <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
-       <div className="w-50 border bg-secondary text-white p-5">
-          <h1>Add New User</h1>
+       <div className="form-container">
+          <h2 className="text-center mb-4">Add New User</h2>
          <form onSubmit={handle}>
-            <div>
-                <label htmlFor="name">Name :</label>
-                <input type="text" name="name" className='form-control'placeholder='Enter Your Name' onChange={e => setname(e.target.value)}/>
+            <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input type="text" name="name" className='form-control' placeholder='Enter Your Name' onChange={e => setname(e.target.value)} required/>
             </div>
-            <div>
-                <label htmlFor="email">Email :</label>
-                <input type="email" name="email" className='form-control' placeholder="Enter Your Email" onChange={e => setemail(e.target.value)}/>
+            <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input type="email" name="email" className='form-control' placeholder="Enter Your Email" onChange={e => setemail(e.target.value)} required/>
             </div>
-            <button className='btn btn-info my-4'>Submit</button>
+            <button type="submit" className='btn btn-success w-100'>Submit</button>
           </form>
        </div>
     </div>

@@ -1,6 +1,6 @@
-import React, { use } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Deleteuser } from './Reducer';
 
 
@@ -16,17 +16,18 @@ const Home = () => {
     <div className='container py-5'>
 
        <h2>CRUD app with JSON Server</h2>
-       <Link to="/create" className='btn btn-success my-4'>Create +</Link>
-       <table className='table'>
+       <div className="d-flex justify-content-end mb-3">
+         <Link to="/create" className='btn btn-success'>Create +</Link>
+       </div>
+       <table className='table table-striped table-hover'>
 
-           <thead>
+           <thead className='thead-dark'>
                
                <tr>
                   <th>ID</th>
-                 
                   <th>Name</th>
                   <th>Email</th>
-                  <th className='ps-5'>Action</th>
+                  <th>Action</th>
                </tr>
 
            </thead>
@@ -35,13 +36,12 @@ const Home = () => {
                 { users.map((user,index)=>(
                     
                     <tr key={index}>
-                        <td className='fs-5'>{user.id}</td>
-                        
-                        <td className='fs-5'>{user.name}</td>
-                        <td className='fs-5'>{user.email}</td>
+                        <td>{user.id}</td>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
                         <td>
-                            <Link to={`/edit/${user.id}`} className='btn btn-sm btn-outline-primary'>Update</Link >
-                            <button className='btn btn-sm btn-outline-danger ms-3' onClick={ () => handleDelete(user.id)}>Delete</button>
+                            <Link to={`/edit/${user.id}`} className='btn btn-sm btn-primary me-2'>Update</Link >
+                            <button className='btn btn-sm btn-danger' onClick={ () => handleDelete(user.id)}>Delete</button>
                         </td>
                     </tr>
 
